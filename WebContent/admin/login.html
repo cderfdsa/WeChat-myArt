@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信小程序后台-登录</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./../images/dfzy.ico"
+          media="screen" />
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <script src="../css/bootstrap/jquery.min.js"></script>
+    <script src="../css/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/super/login.css">
+    <link rel="stylesheet" href="./../css/index.css">
+    <script src="./../js/jquery-1.8.0.js"></script>
+</head>
+<style>
+    li a{
+        font-size: 16px;
+
+    }
+    body{
+        min-width: 1366px;
+    }
+</style>
+<body id="body">
+<header>
+    <div class="bg"></div>
+    <div class="logo"></div>
+    <div class="menu_bar">
+        <div class="menu_content">
+            <ul>
+                <li><a href="../index.html"><font size="3px">首页</font></a></li>
+                <li style="background: sienna"><a href="./login.html"><font
+                        size="3px">登录</font></a></li>
+                <li><a href="./AddArticle.html"><font size="3px">增加删除文章</font></a></li>
+                <li><a href="./ViewAndEdit.html"><font size="3px">查看文章</font></a></li>
+            </ul>
+        </div>
+    </div>
+
+</header>
+<div class="login">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">微信小程序后台登录系统</h3>
+        </div>
+        <div class="panel-body" style="height: 100%">
+            <div class="form row">
+                <form class="form-horizontal col-sm-offset-3 col-md-offset-3" id="login_form" action="login" method="post">
+                    <h3 class="form-title">登录管理员账户</h3>
+                    <div class="col-sm-9 col-md-9">
+                        <div class="form-group">
+                            <i class="fa fa-user fa-lg"></i> <input class="form-control required" type="text" placeholder="Username" id="username" name="username" title="字母下划线或者数字，长度为6到16位" pattern="[a-zA-Z0-9_]{6,16}" autofocus="autofocus" maxlength="16">
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-lock fa-lg"></i> <input class="form-control required" type="password" placeholder="Password" id="password" name="password" title="字母下划线或者数字，长度为6到16位" pattern="[a-zA-Z0-9_.]{6,16}">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" class="btn btn-success pull-right" onclick="login()" value="登录" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+<script>
+
+    var home = document.body.scrollHeight-150;
+    if($(window).height()-150>home){
+        $("#footer").animate({
+            top:$(window).height()
+        })
+    }else{
+        $("#footer").animate({
+            top:home
+        })
+    }
+
+</script>
+<script>
+    $(window).resize(function() {
+        var home = document.body.scrollHeight-150;
+
+        if($(window).height()-150>home){
+            $("#footer").animate({
+                top:$(window).height()
+            })
+        }else{
+            $("#footer").animate({
+                top:home
+            })
+        }
+    });
+</script>
+
+<script>
+function login() {
+    var username = $("#username").val();
+    var password = $("#password").val();
+    $.ajax({
+        type: 'POST',
+        url: '../admin/login/adminLogin',
+        data:{username:username,password:password},
+        success: function(data){
+            if(data == "true"){
+                alert("登陆成功！");
+                window.location.href = "./ViewAndEdit.html";
+            }else{
+                alert("登陆失败！");
+                window.location.href = "./login.html";
+                }
+        },
+        dataType:'text'
+    });
+
+}
+
+
+
+</script>
+</html>

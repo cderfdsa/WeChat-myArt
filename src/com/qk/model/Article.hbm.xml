@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-21 15:40:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.qk.model.Article" table="ARTICLE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <property name="creater" type="java.lang.String">
+            <column name="CREATER" />
+        </property>
+        <property name="type" type="int">
+            <column name="TYPE" />
+        </property>
+        <property name="createDate" type="java.util.Date">
+            <column name="CREATEDATE" />
+        </property>
+        <property name="updateDate" type="java.util.Date">
+            <column name="UPDATEDATE" />
+        </property>
+        <set name="lovers" table="USER_AND_ARTICLE" cascade="save-update">
+            <key>
+                <column name="LOVEARTICLEID"  not-null="false"/>
+            </key>
+            <many-to-many class="com.qk.model.User" column="LOVERID"  lazy="false" fetch="join"/>
+        </set>
+        <set name="readers" table="USER_AND_ARTICLE" cascade="save-update">
+            <key>
+                <column name="READARTICLEID"  not-null="false"/>
+            </key>
+            <many-to-many class="com.qk.model.User"  column="READERID"  lazy="false" fetch="join"/>
+        </set>
+        <property name="loversCount" type="int">
+            <column name="LOVERSCOUNT" />
+        </property>
+        <property name="readersCount" type="int">
+            <column name="READERSCOUNT" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>东方智源文章录入系统</title>
+<link rel="shortcut icon" type="image/x-icon" href="../images/dfzy.ico"
+	media="screen" />
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+<script src="../css/bootstrap/jquery.min.js"></script>
+<script src="../css/bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/super/AddArticle.css">
+<script src="../js/jquery-1.8.0.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../ueditor.all.min.js"> </script>
+</head>
+<style>
+body {
+	min-width: 1366px;
+}
+</style>
+<body>
+	<header>
+		<div class="bg"></div>
+		<div class="logo"></div>
+		<div class="menu_bar">
+			<div class="menu_content">
+				<ul>
+					<li><a href="../index.html"><font size="3px">首页</font></a></li>
+					<li><a href="./whcb.html"><font size="3px">文化传播</font></a></li>
+					<li style="background: sienna"><a href="./ADArticle.html"><font
+							size="3px">修改文化传播文章</font></a></li>
+					<li><a href="./books.html"><font size="3px">经典阅读</font></a></li>
+					<li><a href="./addBooks.html"><font size="3px">修改经典阅读书籍</font></a></li>
+					<li><a href="./lifeSchool.html"><font size="3px">生命驾校</font></a></li>
+					<li><a href="./addLifeSchool.html"><font size="3px">修改生命驾校</font></a></li>
+					<li><a href="./cooperation.html"><font size="3px">合作伙伴</font></a></li>
+					<li><a href="./addCooperation.html"><font size="3px">修改合作伙伴</font></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="add_body">
+		<div class="title">
+			<h1>东方智源文章录入系统</h1>
+			<div class="bar">
+				<p>
+					欢迎管理员---><span id="supername"></span><---登录！当前网站总访问量：<span
+						id="count"></span>&nbsp;今日访问量：<span id="today_count"></span>
+					&nbsp;昨日访问量：<span id="yesterday_count"></span>
+				</p>
+			</div>
+		</div>
+		<form class="form" id="article_form" action="../super/whcb/insert"
+			method="post">
+			<div>
+				<label>文章标题：</label> <input type="text" id="title" name="title">
+			</div>
+			<div style="margin-top: 10px;">
+				<label>文章所属类别：</label> <select id="left"
+					onchange="javascript:select()">
+					<option value="other">其他</option>
+					<option value="jcwh">集藏文化</option>
+					<option value="jkwh">健康文化</option>
+					<option value="wxwh">文学文化</option>
+					<option value="ctwh">中国传统文化</option>
+
+					<!--<option value="古董古玩">古董古玩</option>-->
+					<!--<option value="钱币">钱币</option>-->
+				</select> <select id="right" name="tag">
+					<option value="其他">其他</option>
+
+				</select> <label>文章来源：</label> <select id="creater" name="creater">
+					<option value="其他">其他</option>
+					<option value="网站编辑">网站编辑</option>
+					<option value="自媒体">自媒体</option>
+					<option value="网站运营">网站运营</option>
+					<!--<option value="古董古玩">古董古玩</option>-->
+					<!--<option value="钱币">钱币</option>-->
+				</select>
+			</div>
+			<div style="margin-top: 10px;">
+				<label>文章内容：</label>
+
+				<script id="editor" type="text/plain" name="content"
+					style="width: 100%; height: 500px; margin-left: 0;">
+            </script>
+			</div>
+			<p>
+				<button onclick="javascript:update()" id="ok"
+					style="margin-top: 30px;" class="btn btn-primary pull-right">提交</button>
+			</p>
+		</form>
+		<div style="width: 100%; height: 100px;"></div>
+		<hr>
+		<div style="text-align: center">
+			<h1>东方智源文章按ID删除系统</h1>
+		</div>
+		<form id="remove_Article" style="text-align: left; margin-left: 20%">
+			<label>请输入文章序号</label> <input type="text" id="article_id"> <input
+				value="确认删除" type="button" onclick="javascript:remove()">
+		</form>
+	</div>
+
+	<script>
+            var flag = true;
+            function remove() {
+                if(flag==true){
+                    flag = false;
+                    var id = document.getElementById("article_id").value;
+                    if(id.length>=1){
+                        $.ajax({
+                            type: 'POST',
+                            url: '../super/whcb/remove',
+                            data: {'id':id},
+                            success: function(data){
+                                alert(data);
+                                flag = true;
+                                document.getElementById("article_id").value='';
+                            },
+                            error:function () {
+                                alert("删除失败！请联系管理员！");
+                            },
+                            dataType:'text'
+                        });
+                    }else{
+                        alert("请输入id号码！");
+                    }
+                }
+            }
+            </script>
+	<footer id="footer">
+    <div class="content">
+
+        <div class="f1">
+            <h3>400-710-8886</h3>
+            <p style="color: black">(仅收市话费)</p>
+            <p style="color: black">周一至周日 8:00-18:00</p>
+
+        </div>
+        <div class="f2">
+            <div class="contact_body">
+                <div class="chairman">
+
+                    <address>
+                        <strong>微信小程序有限公司</strong><br>
+                        <span style="text-align: left">经理:杜先生</span><br>
+                        江苏省沭阳县沭城街道<br>
+                        <abbr title="Phone">联系电话:</abbr> 18752735748
+                    </address>
+                </div>
+            </div>
+        </div>
+        <div class="f3">
+
+        </div>
+        <div class="f4">
+
+            <span></span> <a href="#">问题反馈</a><span>|</span>
+            <a href="#">帮助中心</a><span>|</span>
+            <a href="#">网站地图</a><span>|</span>
+            <a href="#">官方微信</a><br>
+
+        </div>
+        <div class="f5">
+            <p>中华人民共和国工业和信息化部备案编号：苏 ICP 备 11021208 号</p>
+
+            Copyright © 2017 - 2018 EGC. All Rights Reserved
+        </div>
+        <div class="f6"></div>
+    </div>
+</footer>
+	<script>
+
+                var home = document.body.scrollHeight-150;
+                if($(window).height()-150>home){
+                    $("#footer").animate({
+                        top:$(window).height()
+                    })
+                }else{
+                    $("#footer").animate({
+                        top:home
+                    })
+                }
+
+            </script>
+	<script>
+                $(window).resize(function() {
+                    var home = document.body.scrollHeight-150;
+
+                    if($(window).height()-150>home){
+                        $("#footer").animate({
+                            top:$(window).height()
+                        })
+                    }else{
+                        $("#footer").animate({
+                            top:home
+                        })
+                    }
+                });
+            </script>
+</body>
+<script>
+
+    var home = document.body.scrollHeight-150;
+    if($(window).height()-150>home){
+        $("#footer").animate({
+            top:$(window).height()
+        })
+    }else{
+        $("#footer").animate({
+            top:home
+        })
+    }
+
+</script>
+<script>
+    $(window).resize(function() {
+        var home = document.body.scrollHeight-150;
+        if($(window).height()-150>home){
+            $("#footer").animate({
+                top:$(window).height()
+            })
+        }else{
+            $("#footer").animate({
+                top:home
+            })
+        }
+    });
+</script>
+<script>
+    var ue = UE.getEditor('editor');
+
+    function hasContent() {
+        return UE.getEditor('editor').hasContents();
+    }
+
+    function update() {
+        flag = false;
+        var title = document.getElementById("title").value;
+        var tag_left = document.getElementById("left").value;
+        var tag_right = document.getElementById("right").value;
+        var creater = document.getElementById("creater").value;
+        if(title.length>1){
+            if(hasContent()==true){
+                document.getElementById("ok").disabled='disabled';
+                //document.getElementById("article_form").submit();
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url:"../super/whcb/insert",
+                    data:$('#article_form').serialize(),// 你的formid
+                    async: false,
+                    error: function(request) {
+                        alert("提交失败，请联系开发者！");
+                        $('#ok').attr("disabled",false);
+                    },
+                    success: function(data) {
+
+                        alert("提交成功！");
+                        document.getElementById("article_id").value='';
+                        document.getElementById("title").value='';
+                         document.getElementById("editor").value='';
+                         window.location.href = "./ADArticle.html";
+                    }
+                });
+            }
+            else{
+                alert("请在文章中输入内容");
+            }
+
+        }else{
+            alert("标题长度要大于1！");
+        }
+
+    }
+
+
+</script>
+<script>
+
+    function select() {
+        var jcwh = ["集藏文化","当代工艺品","书法字画","古董古玩","钱币","邮票"];
+        var jkwh = ["健康文化","水文化","酒文化","营养学知识","中医养生文化"];
+        var wxwh = ["文学文化","小说","散文","诗歌","时评"];
+        var ctwh = ["中国传统文化","儒家学说","佛家禅语","道家思想","书法","绘画","陶瓷","神话故事","生肖文化"];
+        var other = ["其他","其他"];
+        //  var p = ["jcwh","jkwh","wxwh","ctwh"];
+        var s = "";
+        if( $('#left').val() == "jcwh") {
+            for(var i=1;i<jcwh.length;i++){
+                s+="<option value='"+jcwh[i]+"'>"+jcwh[i]+"</option>";
+            }
+        }else if( $('#left').val() == "jkwh"){
+            for(var i=1;i<jkwh.length;i++){
+                s+="<option value='"+jkwh[i]+"'>"+jkwh[i]+"</option>";
+            }
+        }else if( $('#left').val() == "wxwh"){
+            for(var i=1;i<wxwh.length;i++){
+                s+="<option value='"+wxwh[i]+"'>"+wxwh[i]+"</option>";
+            }
+
+        }else if( $('#left').val() == "ctwh"){
+            for(var i=1;i<ctwh.length;i++){
+                s+="<option value='"+ctwh[i]+"'>"+ctwh[i]+"</option>";
+            }
+        }else if( $('#left').val() == "other"){
+            for(var i=1;i<other.length;i++){
+                s+="<option value='"+other[i]+"'>"+other[i]+"</option>";
+            }
+        }
+//                for(var i =0 ;i<p.length;i++){
+//                    if( $('#left').val() == p[i]){
+//
+//
+//                    }
+//                }
+        $("#right").html(s)
+
+    }
+</script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+</script>
+<script>
+    var flag = true;
+    function remove() {
+        if(flag==true){
+            flag = false;
+            var id = document.getElementById("article_id").value;
+            if(id.length>=1){
+                $.ajax({
+                    type: 'POST',
+                    url: '../super/whcb/remove',
+                    data: {'id':id},
+                    success: function(data){
+                        alert(data);
+                        flag = true;
+                        document.getElementById("article_id").value='';
+
+                    },
+                    error:function () {
+                        alert("录入失败！请联系管理员！");
+                    },
+                    dataType:'text'
+                });
+
+            }else{
+                alert("请输入id号码！");
+            }
+
+        }
+    }
+</script>
+<script>
+    $.ajax({
+        type: 'POST',
+        url: '../super/isLogin',
+        success: function(data){
+           if(data == "false"){
+               alert("登录超时，请重新登录！");
+               window.location.href = "./login.html";
+           }else{
+               $.ajax({
+                   type: 'POST',
+                   url: '../super/username',
+                   success: function(data){
+                       $("#supername").html(data);
+                       $.ajax({
+                           type: 'POST',
+                           url: '../visitor/viewcount',
+                           success: function(data){
+
+                               var obj = eval(data);
+                               $("#count").html(obj[2]);
+                               $("#today_count").html(obj[0]);
+                               $("#yesterday_count").html(obj[1]);
+
+                           },
+                           dataType:'text'
+                       });
+                   },
+                   dataType:'text'
+               });
+
+           }
+        },
+        dataType:'text'
+    });
+</script>
+
+<!--<script>-->
+<!--$.ajax({-->
+<!--type: 'POST',-->
+<!--url: '../visitor/count',-->
+<!--success: function(data){-->
+<!--$("#count").html(data);-->
+<!--},-->
+<!--dataType:'text'-->
+<!--});-->
+<!--</script>-->
+
+
+</html>

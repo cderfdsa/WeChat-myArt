@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="/article/content" extends="struts-default">
+		<action name="getArticleByType" class="com.qk.action.getArticleByTypeAction">
+		</action>
+		<action name="getDivArticlePage" class="com.qk.action.getDivArticlePageAction">
+		</action>
+		<action name="getDivArticlePageByType" class="com.qk.action.getDivArticlePageByTypeAction">
+		</action>
+		<action name="getArticleById" class="com.qk.action.getArticleByIdAction">
+		</action>
+		<action name="getLoversByArticleId" class="com.qk.action.getLoversByArticleIdAction">
+		</action>
+		<action name="getReadersByArticleId" class="com.qk.action.getReadersByArticleIdAction">
+		</action>
+		<action name="isLovedArticle" class="com.qk.action.isLovedArticleAction">
+		</action>
+		<action name="isReadArticle" class="com.qk.action.isReadArticleAction">
+		</action>
+	</package>
+
+	<package name="/user/add" extends="struts-default">
+		<action name="addUser" class="com.qk.action.addUserAction">
+		</action>
+		<action name="readArticle" class="com.qk.action.readArticleAction">
+		</action>
+		<action name="loveArticle" class="com.qk.action.loveArticleAction">
+		</action>
+	</package>
+
+	<package name="/user/select" extends="struts-default">
+		<action name="getUserId" class="com.qk.action.getUserIdAction">
+		</action>
+	</package>
+	<package name="/admin/login" extends="struts-default">
+		<action name="adminLogin" class="com.qk.admin.adminLoginAction">
+		</action>
+		<action name="isLogin" class="com.qk.admin.isLoginAction">
+		</action>
+		<action name="username" class="com.qk.admin.getAdminAction">
+		</action>
+	</package>
+	<package name="/admin/article" extends="struts-default">
+		<action name="insert" class="com.qk.admin.insertArticleAction">
+		</action>
+		<action name="del" class="com.qk.admin.delArticleByIdAction">
+		</action>
+		<action name="view" class="com.qk.admin.viewArticleAction">
+        </action>
+        <action name="viewByType" class="com.qk.admin.viewByTypeArticleAction">
+        </action>
+        <action name="changeRead" class="com.qk.admin.changeReadsCountAction">
+        </action>
+        <action name="changeLove" class="com.qk.admin.changeLoversCountAction">
+        </action>
+        <action name="getContentById" class="com.qk.admin.getSingleArticleByIdAction">
+        </action>
+        <action name="update" class="com.qk.admin.updateArticleByIdAction">
+        </action>
+	</package>
+</struts>

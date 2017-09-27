@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信小程序后台-查看文章</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/dfzy.ico"
+          media="screen" />
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+    <script src="../css/bootstrap/jquery.min.js"></script>
+    <script src="../css/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/super/ViewAndEdit.css">
+    <script src="../js/jquery-1.8.0.js"></script>
+</head>
+<style>
+    body {
+        min-width: 1366px;
+    }
+</style>
+<body>
+<header>
+    <div class="bg"></div>
+    <div class="logo"></div>
+    <div class="menu_bar">
+        <div class="menu_content">
+            <ul>
+                <li><a href="../index.html"><font size="3px">首页</font></a></li>
+                <li><a href="./login.html"><font
+                        size="3px">登录</font></a></li>
+                <li><a href="./AddArticle.html"><font size="3px">增加删除文章</font></a></li>
+                <li style="background: sienna"><a href="./ViewAndEdit.html"><font size="3px">查看文章</font></a></li>
+            </ul>
+        </div>
+    </div>
+
+</header>
+<div class="body_background">
+    
+    <div class="body">
+        <button type="button" class="btn btn-primary" onclick="jumpToVersion(0)">苹果</button>
+        <button type="button" class="btn btn-primary" onclick="jumpToVersion(1)">安卓</button>
+        <button type="button" class="btn btn-primary" onclick="jumpToVersion(2)">Windows Phone</button>
+        <button type="button" class="btn btn-primary" onclick="jumpToVersion(3)">其他</button>
+        <h1>文章查看系统</h1>
+        <div id="table">
+        </div>
+    </div>
+    <script>
+        function jump() {
+            var pageIndex = $("#pageIndex").val();
+            getIndexContent(pageIndex,20);
+        }
+    </script>
+    <script>
+        function del(id) {
+            if (confirm("你确定提交吗？")) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../admin/article/del',
+                    data:{id:id},
+                    success: function(data){
+                        alert(data);
+                    },
+                    dataType:'text'
+                });
+            }
+        }
+        getIndexContent(1,20);
+        function getIndexContent(pageIndex,pageSize) {
+            $.ajax({
+                type: 'POST',
+                url: '../admin/article/view',
+                data:{
+                    pageIndex:pageIndex,
+                    pageSize:pageSize
+                },
+                success: function(data){
+                    $("#table").html(data);
+                },
+                dataType:'text'
+            });
+        }
+
+        function changeReadCount(id) {
+            var newCount = prompt("请输入要修改的新的阅读数:");
+            if(newCount != null&&newCount!=0){
+                $.ajax({
+                    type: 'POST',
+                    url: '../admin/article/changeRead',
+                    data:{
+                        id:id,
+                        newCount:newCount
+                    },
+                    success: function(data){
+                        alert(data);
+                    },
+                    dataType:'text'
+                });
+            }
+            }
+
+        function changeLoveCount(id) {
+            var newCount = prompt("请输入要修改的新的点赞数:");
+            if(newCount != null&&newCount!=0) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../admin/article/changeLove',
+                    data: {
+                        id: id,
+                        newCount: newCount
+                    },
+                    success: function (data) {
+                        alert(data);
+                    },
+                    dataType: 'text'
+                });
+            }
+        }
+    </script>
+
+</div>
+</body>
+<script>
+
+    var home = document.body.scrollHeight-150;
+    if($(window).height()-150>home){
+        $("#footer").animate({
+            top:$(window).height()
+        })
+    }else{
+        $("#footer").animate({
+            top:home
+        })
+    }
+
+</script>
+<script>
+    $(window).resize(function() {
+        var home = document.body.scrollHeight-150;
+
+        if($(window).height()-150>home){
+            $("#footer").animate({
+                top:$(window).height()
+            })
+        }else{
+            $("#footer").animate({
+                top:home
+            })
+        }
+    });
+</script>
+
+<script>
+
+    var home = document.body.scrollHeight-150;
+    if($(window).height()-150>home){
+        $("#footer").animate({
+            top:$(window).height()
+        })
+    }else{
+        $("#footer").animate({
+            top:home
+        })
+    }
+
+</script>
+<script>
+    $(window).resize(function() {
+        var home = document.body.scrollHeight-150;
+        if($(window).height()-150>home){
+            $("#footer").animate({
+                top:$(window).height()
+            })
+        }else{
+            $("#footer").animate({
+                top:home
+            })
+        }
+    });
+</script>
+
+<script>
+
+
+</script>
+
+<script>
+    $.ajax({
+        type: 'POST',
+        url: '../admin/login/isLogin',
+        success: function(data){
+            if(data == "false"){
+                alert("登录超时，请重新登录！");
+
+                window.location.href = "./login.html";
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    url: '../admin/login/username',
+                    success: function(data){
+                        $("#supername").html(data);
+                    },
+                    dataType:'text'
+                });
+
+            }
+        },
+        dataType:'text'
+    });
+    function  jumpTo(id) {
+        window.location.href = "./editArticle.html?id="+id;
+    }
+
+    function jumpToVersion(type) {
+              window.location.href = "./ViewArticleByType.html?type="+type;
+    }
+</script>
+</html>

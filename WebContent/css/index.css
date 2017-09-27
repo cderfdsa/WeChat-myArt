@@ -1,0 +1,187 @@
+*{
+    margin: auto;
+}
+html{
+    min-width: 1000px;
+}
+.container{position:relative;width:100%;min-height:100%;}
+body{
+    background: url("../images/bigbg.jpg") 0px -0px;
+    width: 100%;
+    position: relative;
+    line-height: normal;
+
+
+}
+header div.bg  {
+    position: relative;
+    background: url("../images/qingmingshangketu.jpg") 0px -20px;
+    width: 100%;
+    height: 120px;
+
+}
+header div.logo{
+    position: absolute;
+    background: url("../images/logo.png") no-repeat 0px -0px;
+    width: 40%;
+    height: 100px;
+    z-index: 2;
+    left: 100px;
+    top:12px;
+
+
+}
+header div.menu_bar{
+    width: 100%;
+    height: 30px;
+    border: 0px solid white;
+    position: relative;
+    z-index: 2;
+    background: url("../images/menu_bg.gif");
+
+
+}
+.menu_bar .menu_content{
+    height: 100%;
+    position: absolute;
+    left:42%;
+    margin-left: -35%;
+
+}
+.menu_content ul li{
+    list-style-type: none;
+    float: left;
+    height: 20px;
+    margin-left: 50px;
+    margin-top: 4px;
+
+
+
+}
+.menu_content ul li a{
+    text-decoration: none;
+    color: white;
+ }
+.index_body{
+    width: 100%;
+    height: 100%;
+    border: solid 0px white;
+    position: relative;
+}
+.index_body .lunbo{
+    width: 100%;
+    position: relative;
+     max-height: 500px;
+
+}
+.jumbotron{
+    background-color: bisque;
+}
+footer{
+    background: url("../images/footer.png")  repeat -300px -0px;
+    width: 100%;
+    height: 160px;
+    clear: both;
+    position: absolute;
+
+}
+footer .content{
+    position: relative;
+    text-align: center;
+
+}
+footer .content .f1{
+    position: absolute;
+    height: 90px;
+    min-width: 10%;
+    top:20px;
+    right: 10%;
+    border: 0px white solid;
+    color: rgb(238,120,0);
+ }
+footer .content .f2{
+    position: absolute;
+    /*height: 20px;*/
+    width: 30%;
+    top:20px;
+    left: 0%;
+    text-align: center;
+}
+footer .content .f3{
+    height: 60px;
+    width: 545px;
+    margin-top: 30px;
+    border:  0px white solid;
+    background: url("../images/footer_img.png") no-repeat;
+    opacity: 0.2;
+}
+footer .content .f4{
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    top:50px;
+    text-align: center;
+}
+footer .content .f4 a{
+    text-decoration: none;
+    color:black;
+}
+footer .content .f5{
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    top:75px;
+    text-align: center;
+}
+footer .content .f6{
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    top:-30px;
+    background: url("../images/menu_bg.gif") 0 0 ;
+}
+.img_link{
+    position: absolute;
+    border:0px solid yellow;
+    width: 40%;
+    height: 90%;
+    z-index: 100;
+    top:-0px;
+
+
+}
+
+li a {
+    font-size: 16px;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+.jumbotron {
+    margin: 0;
+    padding: 0;
+}
+.carousel-indicators li{
+    background-color: black;
+}
+.carousel-control.left {
+    /*background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);*/
+    background-image:none;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+.carousel-control.right {
+    left: auto;
+    right: 0;
+    /*background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);*/
+    background-image:none;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+}

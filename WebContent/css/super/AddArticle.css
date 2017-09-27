@@ -1,0 +1,30 @@
+.add_body{
+    width: 100%;
+    min-height: 1300px;
+    border: solid 0px red;
+    text-align: center;
+    overflow: auto;
+    background-color: #ffeedd;
+
+}
+.title{
+    margin: 0 auto;
+}
+.form{
+    width: 80%;
+    min-height: 80%;
+    border: solid 0px blue;
+    text-align: left;
+    padding-left: 100px;
+    padding-top: 100px;
+}
+.title .bar{
+    height: 30px;
+    width: 100%;
+    border: 0px solid red;
+    text-align: center
+}
+.bar p{
+    size: 5em;
+    color: black;
+}

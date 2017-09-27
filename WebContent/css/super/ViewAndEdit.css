@@ -1,0 +1,19 @@
+.body_background{
+    width: 100%;
+    min-height: 1500px;
+    border: solid 0px red;
+     overflow: auto;
+    background-color: #ffeedd;
+
+}
+.body{
+    width: 80%;
+}
+.nav_self{
+    position:absolute;
+    top:100%;
+    left:50%;
+    margin-top:-100px;
+    margin-left:-100px;
+
+}

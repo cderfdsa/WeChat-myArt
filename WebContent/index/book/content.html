@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>经典详情</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/dfzy.ico"
+          media="screen" />
+    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    <script src="../../css/bootstrap/jquery.min.js"></script>
+    <script src="../../css/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/index.css">
+    <script src="../../js/jquery-1.8.0.js"></script>
+</head>
+<style>
+    li a{
+        font-size: 16px;
+
+    }
+</style>
+<body id="body">
+<header>
+    <div class="bg"></div>
+    <div class="logo"></div>
+    <div class="menu_bar">
+        <div class="menu_content">
+            <ul>
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="../../whcb.html">文化传播</a></li>
+                <li><a href="../../about.html">公司简介</a></li>
+                <li><a href="../../cooperation.html">合作伙伴</a></li>
+                <li><a href="../../news.html">新闻资讯</a></li>
+                <li><a href="../../contact.html">联系我们</a></li>
+                <li style="background: sienna"><a href="../../contact.html">经典阅读</a></li>
+                <li><a href="../../lifeSchool.html">生命驾校</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</header>
+
+<div style="width: 80%;background-color: #f7e1b5;height: 1500px;overflow-y: scroll">
+    <div  style="text-align: center;size: 25px">
+        <h1 id="title"></h1>
+        发布时间： <small id="time">&nbsp;&nbsp;</small>&nbsp;&nbsp;编辑：<small
+            id="creater">网站编辑</small>&nbsp;&nbsp;文章序号： <small id="id"></small>
+        <hr>
+    </div>
+    <div id="content"></div>
+</div>
+
+
+
+
+
+
+
+
+
+<footer id="footer">
+    <div class="content">
+
+        <div class="f1">
+            <h3>400-710-8886</h3>
+            <p style="color: black">(仅收市话费)</p>
+            <p style="color: black">周一至周日 8:00-18:00</p>
+
+        </div>
+        <div class="f2">
+            <div class="contact_body">
+                <div class="chairman">
+
+                    <address>
+                        <strong>沭阳县东方智源文化传播有限公司</strong><br>
+                        <span style="text-align: left">经理:吴先生</span><br>
+                        江苏省沭阳县沭城街道青岛路205号生命驾校（原青岛路137号炎帝雨）<br>
+                        <abbr title="Phone">联系电话:</abbr> 18436152374
+                    </address>
+                </div>
+            </div>
+        </div>
+        <div class="f3">
+
+        </div>
+        <div class="f4">
+
+            <span></span> <a href="#">问题反馈</a><span>|</span>
+            <a href="#">帮助中心</a><span>|</span>
+            <a href="#">网站地图</a><span>|</span>
+            <a href="#">官方微信</a><br>
+
+        </div>
+        <div class="f5">
+            <p>中华人民共和国工业和信息化部备案编号：苏 ICP 备 11021208 号</p>
+
+            Copyright © 2017 - 2018 EGC. All Rights Reserved
+        </div>
+        <div class="f6"></div>
+    </div>
+</footer>
+</body>
+<script>
+
+    var home = document.body.scrollHeight-150;
+    if($(window).height()-150>home){
+        $("#footer").animate({
+            top:$(window).height()
+        })
+    }else{
+        $("#footer").animate({
+            top:home
+        })
+    }
+
+</script>
+<script>
+    $(window).resize(function() {
+        var home = document.body.scrollHeight-150;
+
+        if($(window).height()-150>home){
+            $("#footer").animate({
+                top:$(window).height()
+            })
+        }else{
+            $("#footer").animate({
+                top:home
+            })
+        }
+    });
+</script>
+<script>
+
+    $.ajax({
+        type: 'POST',
+        url: '../../visitor/session/save',
+        success: function(data){
+        },
+        dataType:'text'
+    });
+
+
+</script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    }
+</script>
+<script charset="gbk">
+
+    $.ajax({
+        type: 'POST',
+        url: '../../book/content',
+        data:{'id':getQueryString("id")},
+        success: function(data){
+             $("#content").html(data);
+             $("#title").html(getQueryString("title"));
+            $("#time").html(getQueryString("time"));
+            $("#id").html(getQueryString("id"));
+        },
+        dataType:'text'
+    });
+
+
+</script>
+
+</html>

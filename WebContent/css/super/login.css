@@ -1,0 +1,9 @@
+.login{
+
+    height: 400px;
+    border: 0px red solid;
+    position: relative;
+    width: 80%;/*以下三行表示居中*/
+    left: 20%;
+    margin-left: -10%;
+}

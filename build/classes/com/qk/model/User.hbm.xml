@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-9-21 15:40:46 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.qk.model.User" table="USER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATETIME" />
+        </property>
+        <property name="lastLoginTime" type="java.util.Date">
+            <column name="LASTLOGINTIME" />
+        </property>
+        <set name="loveArticleSet" table="USER_AND_ARTICLE"  cascade="save-update">
+            <key>
+                <column name="LOVERID"  not-null="false" />
+            </key>
+            <many-to-many class="com.qk.model.Article" column="LOVEARTICLEID" lazy="false" fetch="join"/>
+        </set>
+        <set name="readArticleSet" table="USER_AND_ARTICLE"  cascade="save-update">
+            <key>
+                <column name="READERID"  not-null="false"/>
+            </key>
+            <many-to-many class="com.qk.model.Article" column="READARTICLEID" lazy="false" fetch="join"/>
+        </set>
+    </class>
+</hibernate-mapping>

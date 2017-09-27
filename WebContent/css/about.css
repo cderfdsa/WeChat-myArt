@@ -1,0 +1,124 @@
+.about_content{
+    width: 100%;
+    min-height: 980px;
+    border: 0px solid white;
+    position: relative;
+
+}
+.about_left{
+     position: absolute;
+     border: 0px solid white;
+     top:50px;
+     width: 15%;
+     height:100%;
+     left: 12%;
+ }
+.about_left .ren{
+    background: url("../images/about/ren.png")no-repeat -0px -0px;
+    border: 0px solid white;
+    width: 100%;
+    height: 90px;
+  }
+
+.about_left .yi{
+    background: url("../images/about/yi.png") no-repeat -0px -0px;
+    border: 0px solid white;
+    width: 100%;
+    height: 90px;
+ }
+.about_left .li{
+    background: url("../images/about/li.png")no-repeat -0px -0px;
+    border: 0px solid white;
+    width: 100%;
+    height: 90px;
+ }
+.about_left .zhi{
+    background: url("../images/about/zhi.png")no-repeat -0px -0px;
+    border: 0px solid white;
+    width: 100%;
+    height: 90px;
+ }
+.about_left .xin{
+    background: url("../images/about/xin.png")no-repeat -0px -0px;
+    border: 0px solid white;
+    width: 100%;
+    height: 90px;
+ }
+.about_left .dfzy{
+    background: url("../images/about/dfzy.png") no-repeat -0px -0px;
+    position: absolute;
+    left: -50px;
+    top:600px;
+    border: 0px solid white;
+    width: 250px;
+    height: 120px;
+}
+@media screen  and (max-width: 600px){
+
+}
+.about_right{
+    position: absolute;
+    border: 0px solid white;
+    width: 65%;
+    height: 101%;
+    left: 25%;
+    background: burlywood;
+}
+.about_title{
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.about_info{
+    border: 0px solid white;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.about_body{
+    text-align: left;
+    width: 100%;
+    border: 0px solid white;
+    height:auto;
+    text-indent: 2em;
+ }
+.about_body_div{
+    width: 100%;
+    height: 30px;
+}
+.about_body p{
+     font-size: 15px;
+     margin-left: 50px;
+     margin-right: 50px;
+     line-height:30px
+ }
+.about_body .yrwb{
+    width: 60%;
+    height: 100px;
+    background: url("../images/about/yrwb.png") no-repeat -0px -0px;
+    margin-left: 10%;
+    margin-top: 50px;
+    opacity: 0.2;
+
+}
+.about_body .zyzs{
+    width: 60%;
+    height: 100px;
+    background: url("../images/about/zyzs.png") no-repeat -0px -0px;
+    margin-left: 20%;
+    opacity: 0.2;
+
+}
+.about_body p a{
+    font-size: 15px;
+    text-decoration: none;
+    color: saddlebrown;
+
+}
+.about_body_r{
+    text-align: right;
+    margin-top: 250px;
+}
